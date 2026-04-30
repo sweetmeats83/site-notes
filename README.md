@@ -2,7 +2,7 @@
 
 A self-hosted field notes and project management PWA for contractors and tradespeople. Take notes on-site, attach photos, transcribe audio, manage tasks, and sync with your billing software — all from a single installable web app.
 
-![SiteNote demo](site-note.gif)
+![SiteNote demo](site-notes.gif)
 
 ![License](https://img.shields.io/badge/license-MIT-blue) ![Node](https://img.shields.io/badge/node-20-green) ![Docker](https://img.shields.io/badge/docker-ready-blue)
 
