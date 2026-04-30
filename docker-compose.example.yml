@@ -1,0 +1,41 @@
+# docker-compose.example.yml — standalone deployment (no external networks)
+# Copy to docker-compose.yml and adjust as needed.
+#
+# Usage:
+#   cp .env.example .env          # fill in your values
+#   cp docker-compose.example.yml docker-compose.yml
+#   docker compose up -d --build
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - ./data:/data              # SQLite database + uploaded files
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - DATA_DIR=/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:${PORT:-3000}/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# ─── Optional: connect to an existing reverse-proxy network ───────────────────
+# Uncomment the blocks below if you're using Caddy/nginx/Traefik in another
+# Compose project and want to route traffic through it.
+#
+#    networks:
+#      - default
+#      - proxy
+#
+#networks:
+#  proxy:
+#    external: true
+#    name: your-proxy-network-name

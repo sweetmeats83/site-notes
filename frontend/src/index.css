@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-accent: 37 99 235; /* blue-600 */
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    overscroll-behavior: none;
+  }
+
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+/* Material Symbols base config */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tiptap editor */
+.tiptap-editor {
+  @apply outline-none min-h-[200px];
+}
+
+.tiptap-editor p {
+  @apply my-2;
+}
+
+.tiptap-editor h1 { @apply text-2xl font-bold mt-4 mb-2; }
+.tiptap-editor h2 { @apply text-xl  font-bold mt-4 mb-2; }
+.tiptap-editor h3 { @apply text-lg  font-bold mt-3 mb-1; }
+
+.tiptap-editor ul { @apply list-disc   pl-6 my-2 space-y-1; }
+.tiptap-editor ol { @apply list-decimal pl-6 my-2 space-y-1; }
+
+.tiptap-editor blockquote {
+  @apply border-l-4 border-slate-300 dark:border-slate-600 pl-4 italic text-slate-500 dark:text-slate-400 my-3;
+}
+
+.tiptap-editor code {
+  @apply bg-slate-100 dark:bg-slate-800 rounded px-1 py-0.5 font-mono text-sm;
+}
+
+.tiptap-editor pre {
+  @apply bg-slate-100 dark:bg-slate-800 rounded-lg p-4 my-3 overflow-x-auto font-mono text-sm;
+}
+
+.tiptap-editor hr {
+  @apply border-t border-slate-200 dark:border-slate-700 my-4;
+}
+
+/* Task list (Tiptap) */
+.tiptap-editor ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tiptap-editor ul[data-type="taskList"] li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0.25rem 0;
+}
+
+/* Label becomes the circle hit target */
+.tiptap-editor ul[data-type="taskList"] li > label {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide native checkbox */
+.tiptap-editor ul[data-type="taskList"] li > label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+/* Circle ring */
+.tiptap-editor ul[data-type="taskList"] li > label::before {
+  content: '';
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid #94a3b8;
+  background: transparent;
+  transition: background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+
+.dark .tiptap-editor ul[data-type="taskList"] li > label::before {
+  border-color: #475569;
+}
+
+/* Filled circle when checked */
+.tiptap-editor ul[data-type="taskList"] li[data-checked="true"] > label::before {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+/* Checkmark via border trick */
+.tiptap-editor ul[data-type="taskList"] li[data-checked="true"] > label::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  width: 5px;
+  height: 8px;
+  border-right: 2.2px solid white;
+  border-bottom: 2.2px solid white;
+  transform: rotate(40deg);
+}
+
+/* Strikethrough completed text */
+.tiptap-editor ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.dark .tiptap-editor ul[data-type="taskList"] li[data-checked="true"] > div {
+  color: #64748b;
+}
+
+/* Placeholder */
+.tiptap-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply text-slate-400 dark:text-slate-500 pointer-events-none float-left h-0;
+}
+
+/* Drawing canvas */
+.drawing-canvas {
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-slate-300 dark:bg-slate-700 rounded-full; }
+
+/* Safe area insets for notched phones */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-top    { padding-top:    env(safe-area-inset-top); }

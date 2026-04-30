@@ -1,0 +1,220 @@
+/* ═══════════════════════════════════════════════════════════════
+   CYBERPUNK NEON THEME — Pink & Black Edition
+   Applied when <html> has both .neon and .dark classes.
+   Specificity: html.neon.dark (0,2,1) beats Tailwind dark: (0,2,0)
+   ═══════════════════════════════════════════════════════════════ */
+
+html.neon.dark {
+  --np:    #ff2d78;                         /* neon pink — PRIMARY  */
+  --nm:    #ff0080;                         /* neon magenta — deep  */
+  --nv:    #bf5fff;                         /* neon violet — accent */
+  --nc:    #00e5ff;                         /* neon cyan — accent   */
+  --glow1: 0 0 12px rgba(255,45,120,.45);
+  --glow2: 0 0 24px rgba(255,45,120,.28), 0 0 52px rgba(255,45,120,.12);
+  --glass: rgba(4, 0, 10, 0.82);
+  --glass-border: rgba(255,45,120,.22);
+}
+
+/* ── Page background ─────────────────────────────────────────── */
+
+html.neon.dark body {
+  background: #050008;
+  background-image:
+    radial-gradient(ellipse at 18% 35%, rgba(255,45,120,.07) 0%, transparent 52%),
+    radial-gradient(ellipse at 82% 65%, rgba(191,95,255,.06) 0%, transparent 52%),
+    linear-gradient(rgba(255,45,120,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,45,120,.022) 1px, transparent 1px);
+  background-size: auto, auto, 60px 60px, 60px 60px;
+}
+
+html.neon.dark .dark\:bg-slate-950 {
+  background: transparent !important;
+}
+
+/* ── Header / nav bar ────────────────────────────────────────── */
+
+html.neon.dark .dark\:bg-slate-900 {
+  background: var(--glass) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border-color: var(--glass-border) !important;
+  box-shadow:
+    0 0 0 1px var(--glass-border),
+    0 8px 32px rgba(0,0,0,.7),
+    0 0 40px rgba(255,45,120,.04) !important;
+}
+
+/* ── Secondary surfaces (inputs, sub-panels, dropdowns) ─────── */
+
+html.neon.dark .dark\:bg-slate-800 {
+  background: rgba(10, 2, 16, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-color: rgba(255,45,120,.15) !important;
+}
+
+/* ── Borders ─────────────────────────────────────────────────── */
+
+html.neon.dark .dark\:border-slate-800 {
+  border-color: rgba(255,45,120,.15) !important;
+}
+html.neon.dark .dark\:border-slate-700 {
+  border-color: rgba(255,45,120,.25) !important;
+}
+html.neon.dark .dark\:divide-slate-800 > * + * {
+  border-color: rgba(255,45,120,.12) !important;
+}
+
+/* ── Text ────────────────────────────────────────────────────── */
+
+html.neon.dark .dark\:text-white     { color: #ffe8f0 !important; }
+html.neon.dark .dark\:text-slate-200 { color: #f0c8d8 !important; }
+html.neon.dark .dark\:text-slate-300 { color: #c898b0 !important; }
+html.neon.dark .dark\:text-slate-400 { color: rgba(255,45,120,.6) !important; }
+html.neon.dark .dark\:text-slate-500 { color: rgba(255,45,120,.38) !important; }
+
+/* App name & accent links — pink glow */
+html.neon.dark .dark\:text-blue-400 {
+  color: var(--np) !important;
+  text-shadow: 0 0 10px rgba(255,45,120,.7), 0 0 22px rgba(255,45,120,.3) !important;
+}
+html.neon.dark .text-blue-600 {
+  color: var(--np) !important;
+  text-shadow: 0 0 8px rgba(255,45,120,.65) !important;
+}
+
+/* ── Buttons — primary blue → neon pink ghost ────────────────── */
+
+html.neon.dark .bg-blue-600 {
+  background: rgba(255,45,120,.09) !important;
+  border: 1px solid rgba(255,45,120,.55) !important;
+  color: var(--np) !important;
+  box-shadow: var(--glow1), inset 0 0 12px rgba(255,45,120,.05) !important;
+  text-shadow: 0 0 8px rgba(255,45,120,.85) !important;
+}
+html.neon.dark .bg-blue-600:hover,
+html.neon.dark .hover\:bg-blue-700:hover {
+  background: rgba(255,45,120,.17) !important;
+  box-shadow: var(--glow2), inset 0 0 18px rgba(255,45,120,.08) !important;
+}
+
+/* ── Emerald → neon violet (contrast accent) ─────────────────── */
+
+html.neon.dark .bg-emerald-600 {
+  background: rgba(191,95,255,.09) !important;
+  border: 1px solid rgba(191,95,255,.48) !important;
+  color: var(--nv) !important;
+  box-shadow: 0 0 12px rgba(191,95,255,.28) !important;
+  text-shadow: 0 0 8px rgba(191,95,255,.8) !important;
+}
+html.neon.dark .bg-emerald-600:hover,
+html.neon.dark .hover\:bg-emerald-700:hover {
+  background: rgba(191,95,255,.17) !important;
+  box-shadow: 0 0 22px rgba(191,95,255,.38) !important;
+}
+
+/* ── Violet → deep magenta ───────────────────────────────────── */
+
+html.neon.dark .bg-violet-600 {
+  background: rgba(255,0,128,.09) !important;
+  border: 1px solid rgba(255,0,128,.5) !important;
+  color: #ff80b5 !important;
+  box-shadow: 0 0 12px rgba(255,0,128,.3) !important;
+  text-shadow: 0 0 8px rgba(255,0,128,.8) !important;
+}
+html.neon.dark .bg-violet-600:hover,
+html.neon.dark .hover\:bg-violet-700:hover {
+  background: rgba(255,0,128,.17) !important;
+  box-shadow: 0 0 22px rgba(255,0,128,.42) !important;
+}
+
+/* ── Nav active state ────────────────────────────────────────── */
+
+html.neon.dark .dark\:bg-blue-950 {
+  background: rgba(255,45,120,.1) !important;
+  border: 1px solid rgba(255,45,120,.22) !important;
+}
+
+/* ── Tab active underline ────────────────────────────────────── */
+
+html.neon.dark .border-blue-600 {
+  border-color: var(--np) !important;
+  filter: drop-shadow(0 2px 4px rgba(255,45,120,.55));
+}
+
+/* ── Tags / badges ───────────────────────────────────────────── */
+
+html.neon.dark .dark\:text-blue-300 {
+  color: var(--np) !important;
+  text-shadow: 0 0 6px rgba(255,45,120,.55) !important;
+}
+
+/* ── Focus rings ─────────────────────────────────────────────── */
+
+html.neon.dark .focus\:ring-blue-500:focus,
+html.neon.dark .focus\:ring-2:focus {
+  --tw-ring-color: rgba(255,45,120,.45) !important;
+  box-shadow: 0 0 0 2px rgba(255,45,120,.22), 0 0 12px rgba(255,45,120,.2) !important;
+}
+
+/* ── Card hover glow ─────────────────────────────────────────── */
+
+html.neon.dark .rounded-2xl {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+html.neon.dark a.rounded-2xl:hover,
+html.neon.dark button.rounded-2xl:hover,
+html.neon.dark .group:hover > .rounded-2xl {
+  box-shadow:
+    0 0 0 1px rgba(255,45,120,.32),
+    0 0 30px rgba(255,45,120,.1),
+    0 8px 32px rgba(0,0,0,.6) !important;
+  border-color: rgba(255,45,120,.32) !important;
+}
+
+/* ── Project color dot glow ──────────────────────────────────── */
+
+html.neon.dark .rounded-full[style*="background"] {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* ── Toast notifications ─────────────────────────────────────── */
+
+html.neon.dark .bg-green-600 {
+  background: rgba(191,95,255,.12) !important;
+  border: 1px solid rgba(191,95,255,.4) !important;
+  color: var(--nv) !important;
+  box-shadow: 0 0 16px rgba(191,95,255,.22) !important;
+}
+html.neon.dark .bg-red-600 {
+  background: rgba(255,50,50,.12) !important;
+  border: 1px solid rgba(255,80,80,.4) !important;
+  color: #ff6b6b !important;
+  box-shadow: 0 0 16px rgba(255,50,50,.2) !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+
+html.neon.dark ::-webkit-scrollbar        { width: 5px; height: 5px; }
+html.neon.dark ::-webkit-scrollbar-track  { background: transparent; }
+html.neon.dark ::-webkit-scrollbar-thumb  { background: rgba(255,45,120,.35); border-radius: 3px; }
+html.neon.dark ::-webkit-scrollbar-thumb:hover { background: rgba(255,45,120,.6); }
+
+/* ── Text selection ──────────────────────────────────────────── */
+
+html.neon.dark ::selection {
+  background: rgba(255,45,120,.2);
+  color: var(--np);
+}
+
+/* ── Placeholder text ────────────────────────────────────────── */
+
+html.neon.dark ::placeholder { color: rgba(255,45,120,.3) !important; }
+
+/* ── Quick capture FAB ───────────────────────────────────────── */
+
+html.neon.dark .dark\:bg-blue-500 {
+  background: rgba(255,45,120,.12) !important;
+  border: 1px solid rgba(255,45,120,.5) !important;
+  box-shadow: var(--glow1) !important;
+}
